@@ -75,7 +75,7 @@ const Upload = () => {
             ) : (
               <div>
                 <p className="text-lg font-semibold mb-1">Click to select file</p>
-                <p className="text-slate-500 text-sm">PDF, DOCX up to 10MB</p>
+                <p className="text-slate-500 text-sm">PDF, DOCX up to 100MB</p>
               </div>
             )}
           </div>
