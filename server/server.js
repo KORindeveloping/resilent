@@ -16,6 +16,19 @@ app.use(express.urlencoded({ limit: '100mb', extended: true }));
 // Routes
 app.use('/api', documentRoutes);
 
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error('Global error handler:', err);
+  
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    return res.status(400).json({ error: 'File too large. Maximum limit is 100MB.' });
+  }
+  
+  res.status(err.status || 500).json({ 
+    error: err.message || 'Internal Server Error' 
+  });
+});
+
 // Root route
 app.get('/', (req, res) => {
   res.send('Document Cloud API is running...');

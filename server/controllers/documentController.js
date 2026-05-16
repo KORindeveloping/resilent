@@ -12,6 +12,9 @@ exports.uploadDocument = async (req, res) => {
     const fileExt = path.extname(file.originalname);
     const fileName = `${Date.now()}${fileExt}`;
     const filePath = file.path;
+    const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+
+    console.log(`Starting upload: ${file.originalname} (${fileSizeMB} MB)`);
 
     // 1. Upload to Supabase Storage
     const fileBuffer = fs.readFileSync(filePath);
@@ -55,8 +58,12 @@ exports.uploadDocument = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Upload error:', error);
-    res.status(500).json({ error: error.message });
+    console.error('Upload error detail:', error);
+    const statusCode = error.status || (error.statusCode ? error.statusCode : 500);
+    res.status(statusCode).json({ 
+      error: error.message || 'Upload failed',
+      details: error.error_description || error.code || null
+    });
   }
 };
 
