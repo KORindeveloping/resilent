@@ -34,6 +34,8 @@ app.get('/', (req, res) => {
   res.send('Document Cloud API is running...');
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+server.timeout = 300000; // 5 minutes
