@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const documentRoutes = require('./routes/documentRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
 // Routes
 app.use('/api', documentRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

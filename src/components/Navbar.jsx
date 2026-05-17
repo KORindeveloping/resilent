@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Cloud, LayoutDashboard, UploadCloud } from 'lucide-react';
+import { Cloud, LayoutDashboard, UploadCloud, Bot } from 'lucide-react';
 
 const Navbar = () => {
   const location = useLocation();
@@ -35,7 +35,15 @@ const Navbar = () => {
             }`}
           >
             <UploadCloud size={18} />
-            <span className="hidden sm:inline">Upload</span>
+          </Link>
+          <Link 
+            to="/chat" 
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+              isActive('/chat') ? 'bg-primary/10 text-primary font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Bot size={18} />
+            <span className="hidden sm:inline">AI Chat</span>
           </Link>
         </div>
       </div>
