@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Cloud, LayoutDashboard, UploadCloud, Bot } from 'lucide-react';
+import { Cloud, LayoutDashboard, UploadCloud } from 'lucide-react';
 
 const Navbar = () => {
   const location = useLocation();
@@ -19,31 +19,21 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-1 md:gap-4">
-          <Link 
-            to="/" 
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-              isActive('/') ? 'bg-primary/10 text-primary font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5'
-            }`}
+          <Link
+            to="/"
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${isActive('/') ? 'bg-primary/10 text-primary font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5'
+              }`}
           >
             <LayoutDashboard size={18} />
             <span className="hidden sm:inline">Dashboard</span>
           </Link>
-          <Link 
-            to="/upload" 
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-              isActive('/upload') ? 'bg-primary/10 text-primary font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5'
-            }`}
+          <Link
+            to="/upload"
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${isActive('/upload') ? 'bg-primary/10 text-primary font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5'
+              }`}
           >
             <UploadCloud size={18} />
-          </Link>
-          <Link 
-            to="/chat" 
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-              isActive('/chat') ? 'bg-primary/10 text-primary font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <Bot size={18} />
-            <span className="hidden sm:inline">AI Chat</span>
+            <span className="hidden sm:inline">Upload</span>
           </Link>
         </div>
       </div>

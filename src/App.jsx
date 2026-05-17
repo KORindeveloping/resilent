@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Upload from './pages/Upload';
 import Viewer from './pages/Viewer';
-import Chat from './pages/Chat';
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/viewer" element={<Viewer />} />
-        <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
   );

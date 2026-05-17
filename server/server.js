@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const documentRoutes = require('./routes/documentRoutes');
-const aiRoutes = require('./routes/aiRoutes');
 
 dotenv.config();
 
@@ -16,18 +15,17 @@ app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
 // Routes
 app.use('/api', documentRoutes);
-app.use('/api/ai', aiRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
   console.error('Global error handler:', err);
-  
+
   if (err.code === 'LIMIT_FILE_SIZE') {
     return res.status(400).json({ error: 'File too large. Maximum limit is 100MB.' });
   }
-  
-  res.status(err.status || 500).json({ 
-    error: err.message || 'Internal Server Error' 
+
+  res.status(err.status || 500).json({
+    error: err.message || 'Internal Server Error'
   });
 });
 

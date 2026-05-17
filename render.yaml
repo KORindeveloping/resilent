@@ -2,17 +2,16 @@ services:
   # Backend
   - type: web
     name: resilent-backend
-    runtime: docker
-    dockerfilePath: ./Dockerfile
+    runtime: node
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
     envVars:
       - key: PORT
-        value: 10000
+        value: 5000
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_KEY
         sync: false
-      - key: OLLAMA_HOST
-        value: 0.0.0.0
 
   # Frontend
   - type: static
